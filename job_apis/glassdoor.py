@@ -7,6 +7,7 @@ import csv
 import datetime
 
 
+
 def request_searchUrl():
     headers = {
         'User-Agent': 'Mozilla/5.0 (iPhone; CPU OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Safari/605.1.15 GDApple/9.1.0',
@@ -20,7 +21,7 @@ def request_searchUrl():
         'pageNumber': '1',
         'locId': '1140177',
         'locT': 'C',
-        'keyword': 'Lab',
+        'keyword': 'Lab assistant',
         'action': 'jobs',
         's.expires': '1648595117724',
         'signature': 'ucda5nWj+iLfPPtQvXRFHNIrTCo=',
@@ -39,13 +40,17 @@ def add_job_to_list(job_url,api):
         soup = bs4.BeautifulSoup(fp, "html.parser")
         json_data = soup.find("script", type="application/ld+json").text
         data = json.loads(json_data)
-        description = data['description']
+        # description = data['description']
         datePosted = data['datePosted']
         company = data['hiringOrganization']['name']
         datePosted = datetime.datetime.strptime(datePosted, '%Y-%m-%dT%H:%M:%S').strftime('%b %d, %Y')
         with open('jobfilter.csv', 'a') as csv_file:
             writer = csv.writer(csv_file)
-            writer.writerow([company, datePosted, description,job_url,api])
+            writer.writerow([company, datePosted,job_url,api])
+
+        # return job_url
+
+
 
 
 
