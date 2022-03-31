@@ -11,18 +11,22 @@ def read_csv():
     global count
     with open('jobfilter.csv', 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
-        for number, joblist in enumerate(csv_reader, start=1):
+        for number, joblist in enumerate(csv_reader, start=0):
             webbrowser.open(joblist[2])
             time.sleep(5)
-            if number % 3 == 0:
-                input("Press Enter to continue...")
-                # save progress in csv file
-                with open('jobs_applied.csv', 'a') as csv_file:
-                    writer = csv.writer(csv_file)
-                    writer.writerow([joblist[0], joblist[1], joblist[2], joblist[3]])
+            input("Press Enter to continue...")
+            with open('jobs_applied.csv', 'a') as csv_file:
+                writer = csv.writer(csv_file)
+                writer.writerow([joblist[0], joblist[1], joblist[2], joblist[3]])
+            if number == 0:
+                print(f"{count} jobs have been applied to")
             else:
-                continue
-
+                count += 1
+                print(f"{joblist[0]}")
+                print(f"{joblist[1]}")
+                print(f"{joblist[2]}")
+                print(f"{count} jobs have been applied to")
+                print("\n")
 
 
         
@@ -32,6 +36,10 @@ def read_csv():
 def removeOldCsv():
     if os.path.exists('jobfilter.csv'):
         os.remove('jobfilter.csv')
+    
+    # if os.path.exists('jobs_applied.csv'):
+    #     os.remove('jobs_applied.csv')
+
 
     with open('jobfilter.csv', 'a') as csv_file:
         writer = csv.writer(csv_file)
@@ -44,6 +52,7 @@ def cleanUp():
 
     if os.path.exists('glassdoor_jobs.html'):
         os.remove('glassdoor_jobs.html')
+        
 
 def start_Job_Search():
     glassdoor.glassdoor_api()
@@ -52,9 +61,9 @@ def start_Job_Search():
 
 
 
-removeOldCsv()
-start_Job_Search()
-cleanUp()
+# removeOldCsv()
+# start_Job_Search()
+# cleanUp()
 read_csv()
 
 
