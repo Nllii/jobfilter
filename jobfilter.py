@@ -16,6 +16,13 @@ def read_csv():
             time.sleep(5)
             if number % 3 == 0:
                 input("Press Enter to continue...")
+                # save progress in csv file
+                with open('jobs_applied.csv', 'a') as csv_file:
+                    writer = csv.writer(csv_file)
+                    writer.writerow([joblist[0], joblist[1], joblist[2], joblist[3]])
+            else:
+                continue
+
 
 
         
