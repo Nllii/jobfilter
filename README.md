@@ -9,7 +9,7 @@ main file is ```jobfilter.py ```
 ![screenshot](https://github.com/Nllii/jobfilter/blob/26690751a2041fdce3950192b3130c3ea60d03d6/job_apis/jobfilter.png)
 
 
-![terminal](https://github.com/Nllii/jobfilter/blob/c9fcb44df4f35db2c7ee71cccf0aafdd571fbc86/job_apis/jobfilterTerminal.png)
+![terminal](https://github.com/Nllii/jobfilter/blob/dc0beeb67eaeca0c25bcf3840aa792419b607814/job_apis/terminalFilter.png)
 
 
 
@@ -17,6 +17,7 @@ main file is ```jobfilter.py ```
 ## Things todo, that don't really improve the quality of the program.
 
 - [ ] Remove api_keys.
+- [ ] Finish terminal options
 - [ ] finish writing the functions to include search parameters.
 - [ ] use pandas to fix the CSV.
 - [ ] clean data.
