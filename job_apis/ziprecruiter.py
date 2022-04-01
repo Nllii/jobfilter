@@ -3,7 +3,7 @@ import pprint
 import csv
 
 
-def ziprecruiter_api():
+def ziprecruiter_api(search,radius,city,state_abbrev):
     
     headers = {
     'User-Agent': 'Job Search/3084 (iPhone; CPU iOS 14_0 like Mac OS X)',
@@ -13,9 +13,9 @@ def ziprecruiter_api():
     params = {
         'allow_currency': 'USD',
         'days': '2',
-        'location': 'Houston, TX',
-        'radius': '30',
-        'search': 'Lab assistant',
+        'location': '{}, {}'.format(city,state_abbrev),
+        'radius': '{}'.format(radius),
+        'search': '{}'.format(search),
     }
 
     response = requests.get('https://api.ziprecruiter.com/jobs-app/jobs', headers=headers, params=params)

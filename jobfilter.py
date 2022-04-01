@@ -13,8 +13,11 @@ def read_csv():
         csv_reader = csv.reader(csv_file)
         for number, joblist in enumerate(csv_reader, start=0):
             webbrowser.open(joblist[2])
-            time.sleep(5)
+            time.sleep(1)
             input("Press Enter to continue...")
+            # close the previous webbrowser tab 
+            # webbrowser.open_new_tab('about:blank')
+
             with open('jobs_applied.csv', 'a') as csv_file:
                 writer = csv.writer(csv_file)
                 writer.writerow([joblist[0], joblist[1], joblist[2], joblist[3]])
@@ -55,15 +58,15 @@ def cleanUp():
         
 
 def start_Job_Search():
-    glassdoor.glassdoor_api()
-    ziprecruiter.ziprecruiter_api()
+    glassdoor.glassdoor_api(keyword= 'lab assistant')
+    ziprecruiter.ziprecruiter_api(search='lab assistant',radius = 10,city= "Houston",state_abbrev="TX")
 
 
 
 
-# removeOldCsv()
-# start_Job_Search()
-# cleanUp()
+removeOldCsv()
+start_Job_Search()
+cleanUp()
 read_csv()
 
 

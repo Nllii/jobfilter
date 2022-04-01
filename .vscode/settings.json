@@ -1,0 +1,17 @@
+{
+    "C_Cpp.errorSquiggles": "Enabled",
+    "files.associations": {
+        "*.config": "asterisk-config",
+        "*.conf": "php",
+        "gtk.h": "c",
+        "gdk.h": "c",
+        "gtkapplicationwindow.h": "c",
+        "gtkrecentchooser.h": "c",
+        "gdkdisplaymanager.h": "c",
+        "gdkdisplay.h": "c",
+        "gdkcursor.h": "c",
+        "gdkenumtypes.h": "c",
+        "gdkscreen.h": "c",
+        "gdkversionmacros.h": "c"
+    }
+}

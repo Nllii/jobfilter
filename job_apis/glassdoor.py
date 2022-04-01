@@ -8,10 +8,10 @@ import datetime
 
 
 
-def request_searchUrl():
+def request_searchUrl(keyword):
     headers = {
         'User-Agent': 'Mozilla/5.0 (iPhone; CPU OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Safari/605.1.15 GDApple/9.1.0',
-        'Referer': 'https://api.glassdoor.com/api-internal/api.htm?responseType=json&t.p=16&t.k=fz6JLNgLgVs&version=1.2&pageNumber=1&locId=1140177&locT=C&keyword=Lab&action=jobs&s.expires=1648595117724&signature=ucda5nWj%2BiLfPPtQvXRFHNIrTCo%3D&locale=en_US&deviceLocale=en_US&gdAppVersion=9.1.0',
+        # 'Referer': 'https://api.glassdoor.com/api-internal/api.htm?responseType=json&t.p=16&t.k=fz6JLNgLgVs&version=1.2&pageNumber=1&locId=1140177&locT=C&keyword=Lab&action=jobs&s.expires=1648595117724&signature=ucda5nWj%2BiLfPPtQvXRFHNIrTCo%3D&locale=en_US&deviceLocale=en_US&gdAppVersion=9.1.0',
     }
     params = {
         'responseType': 'json',
@@ -21,7 +21,7 @@ def request_searchUrl():
         'pageNumber': '1',
         'locId': '1140177',
         'locT': 'C',
-        'keyword': 'Lab assistant',
+        'keyword': '{}'.format(keyword),
         'action': 'jobs',
         's.expires': '1648595117724',
         'signature': 'ucda5nWj+iLfPPtQvXRFHNIrTCo=',
@@ -54,9 +54,9 @@ def add_job_to_list(job_url,api):
 
 
 
-def glassdoor_api():
+def glassdoor_api(keyword):
     api = "glassdoor"
-    attributionURL = request_searchUrl()
+    attributionURL = request_searchUrl(keyword)
     proc = subprocess.Popen(["curl", "-o", "glassdoor_jobs.html", attributionURL], stdout=subprocess.PIPE)
     (out, err) = proc.communicate()
     with open("glassdoor_jobs.html") as fp:
