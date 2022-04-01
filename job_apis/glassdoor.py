@@ -5,7 +5,7 @@ import subprocess
 import json
 import csv
 import datetime
-
+from tqdm import tqdm
 
 
 def request_searchUrl(keyword):
@@ -38,8 +38,8 @@ def request_searchUrl(keyword):
 def add_job_to_list(job_url,api):
     with open("job_url.html") as fp:
         soup = bs4.BeautifulSoup(fp, "html.parser")
-        json_data = soup.find("script", type="application/ld+json").text
-        data = json.loads(json_data)
+        json_data = soup.find("script", {"type": "application/ld+json"})
+        data = json.loads(json_data.string)
         # description = data['description']
         datePosted = data['datePosted']
         company = data['hiringOrganization']['name']
@@ -61,8 +61,8 @@ def glassdoor_api(keyword):
     (out, err) = proc.communicate()
     with open("glassdoor_jobs.html") as fp:
         soup = bs4.BeautifulSoup(fp, "html.parser")
-        json_data = soup.find("script", type="application/ld+json").text
-        data = json.loads(json_data)
+        json_data = soup.find("script", {"type": "application/ld+json"})
+        data = json.loads(json_data.string)
         jobs = data['itemListElement']
         for job in jobs:
             job_url = job['url']

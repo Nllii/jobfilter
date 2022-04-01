@@ -4,34 +4,44 @@ import webbrowser
 import csv
 import os
 import time
+from tqdm import tqdm
 
 # open and read csv file to get job urls
-count=0 
-def read_csv():
-    global count
+# tqdm(range(0, jobstotals))
+# count += 1
+# if count == total_jobs:
+#     break
+count=0
+total_job = 0
+
+def total_jobs_found():
+    total_job = 0
     with open('jobfilter.csv', 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
-        for number, joblist in enumerate(csv_reader, start=0):
-            webbrowser.open(joblist[2])
-            time.sleep(1)
-            input("Press Enter to continue...")
-            # close the previous webbrowser tab 
-            # webbrowser.open_new_tab('about:blank')
-
-            with open('jobs_applied.csv', 'a') as csv_file:
-                writer = csv.writer(csv_file)
-                writer.writerow([joblist[0], joblist[1], joblist[2], joblist[3]])
-            if number == 0:
-                print(f"{count} jobs have been applied to")
-            else:
-                count += 1
-                print(f"{joblist[0]}")
-                print(f"{joblist[1]}")
-                print(f"{joblist[2]}")
-                print(f"{count} jobs have been applied to")
-                print("\n")
+        for line in csv_reader:
+            total_job += 1
+    print(f"{total_job} jobs have been found")
+    return total_job
 
 
+def read_csv():
+    global count,jobstotals
+    jobstotals = total_jobs_found()
+    with open('jobfilter.csv', 'r') as csv_file:
+        csv_reader = csv.reader(csv_file)
+        for jobfiltered in tqdm(range(0, jobstotals), desc ="progress update"):
+            if jobfiltered == 0:
+                print("jobfilter.csv has been read")
+                #     writer = csv.writer(csv_file)
+                #     writer.writerow([joblist[0], joblist[1], joblist[2], joblist[3]])
+                next(csv_reader)
+            else:    
+                time.sleep(.1)
+                jobs = next(csv_reader)
+                jobs = list(jobs)
+                webbrowser.open(jobs[2])
+                input("Press Enter to continue...")
+          
         
 
 # # remove the old csv_file
@@ -59,14 +69,14 @@ def cleanUp():
 
 def start_Job_Search():
     glassdoor.glassdoor_api(keyword= 'lab assistant')
-    ziprecruiter.ziprecruiter_api(search='lab assistant',radius = 10,city= "Houston",state_abbrev="TX")
+    # ziprecruiter.ziprecruiter_api(search='lab assistant',radius = 10,city= "Houston",state_abbrev="TX")
 
 
 
 
-removeOldCsv()
-start_Job_Search()
-cleanUp()
+# removeOldCsv()
+# start_Job_Search()
+# cleanUp()
 read_csv()
 
 
