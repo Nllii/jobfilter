@@ -74,8 +74,8 @@ def start_Job_Search():
 
 
 
-# removeOldCsv()
-# start_Job_Search()
-# cleanUp()
+removeOldCsv()
+start_Job_Search()
+cleanUp()
 read_csv()
 
