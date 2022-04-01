@@ -14,11 +14,9 @@ that pays more.
 
 
 
-#### Things todo, that don't really improve the quality of the program.
-TODO: Remove api_keys.
+## Things todo, that don't really improve the quality of the program.
 
-TODO: finish writing the functions to include search parameters.
-
-TODO: use pandas to fix the CSV.
-
-TODO: clean data.
+- [ ] Remove api_keys.
+- [ ] finish writing the functions to include search parameters.
+- [ ] use pandas to fix the CSV.
+- [ ] clean data.
