@@ -17,6 +17,7 @@ main file is ```jobfilter.py ```
 ## Things todo, that don't really improve the quality of the program.
 
 - [ ] Remove api_keys.
+- [ ] Finish indeed? (http://jooble.org) ... Need to find duplicated  and remove it. 
 - [ ] Finish terminal options
 - [ ] finish writing the functions to include search parameters.
 - [ ] use pandas to fix the CSV.
