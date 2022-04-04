@@ -1,16 +1,16 @@
 
 # def checking_progress():
 
-def check_if_job_exists(job):
-    with open('jobfilter.csv', 'r') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        for jobs_found in csv_reader:
-            if jobs_found[2] == job:
-                print("Job already exists in csv file")
-                return jobs_found[2]
-            else:
-                print("Job does not exist in csv file")
-                return jobs_found[2]
+# def check_if_job_exists(job):
+#     with open('jobfilter.csv', 'r') as csv_file:
+#         csv_reader = csv.reader(csv_file)
+#         for jobs_found in csv_reader:
+#             if jobs_found[2] == job:
+#                 print("Job already exists in csv file")
+#                 return jobs_found[2]
+#             else:
+#                 print("Job does not exist in csv file")
+#                 return jobs_found[2]
 
             # print(jobs_found[2])
 
