@@ -1,15 +1,51 @@
 import csv 
 import os
 
+# def checking_progress():
+if os.path.exists('progress_filter.csv'):
+    with open("progress_filter.csv") as f:
+        lines = f.readlines()
+    lines
+    print(lines[0])
+    lines[0] = "status,hiring_company,get_time,get_url,site_name \n"
+    lines # ["This is the line that's replaced.\n", 'This is the second line.\n']
+    with open("progress_filter.csv", "w") as f:
+        f.writelines(lines)
+    for line in lines:
+        line_count = len(lines)
+
+
+# if exist progress_filter.csv
+#     with open("progress_filter.csv") as f:
+#         lines = f.readlines()
+        # return line_count
+
+
+# def continue_filter():
+#     print("\n")
+#     print("Do you want to continue from where you left off? (y/n)")
+#     continue_filter = input()
+#     if continue_filter == 'y':
+#         return True
+#     elif continue_filter == 'n':
+#         return False
+#     else:
+#         print("Invalid input. Please enter 'y' or 'n'")
+#         continue_filter()
+
+
+
 
 
 def jobfilter_menu(jobsListing):
+
     menu_options = {
         1: 'Applied',
         2: 'Not Applied',
         3: 'Not Interested',
         4: 'Press Enter to continue...',
     }
+    
     print("\n")
     print(jobsListing)
 
@@ -63,4 +99,4 @@ def jobfilter_menu(jobsListing):
     #     exit()
     # else:
     #     print('Invalid option. Please enter a number between 1 and 4.')
-
+# jobfilter_menu(jobsListing ="none")
