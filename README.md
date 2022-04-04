@@ -17,6 +17,7 @@ main file:  ```jobfilter.py ```
 ## Things todo, that don't really improve the quality of the program.
 Important: Implement a filter and add a cool visualizer.
 
+
 - [ ] Remove api_keys.
 - [ ] Finish indeed? (http://jooble.org) ... Need to find duplicated  and remove it. 
 - [ ] Finish terminal options
